@@ -1,7 +1,7 @@
 eccphp
 ======
 
-Simple elliptic curve cryptography in PHP, uses NIST's recommended curve P-521. The encryption uses EC-ElGamal 
+Simple elliptic curve cryptography in PHP, uses NIST's recommended curve P-521. The crypt uses EC-ElGamal, the sign uses ECDSA algorithms.
 
 Commands:
 
