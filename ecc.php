@@ -1,11 +1,9 @@
 #!/usr/bin/php -f
 <?
 
-/*
+error_reporting(E_ALL|E_STRICT);
 
-chmod +x ecc.php;./ecc.php g;./ecc.php s sec.key file.txt;./ecc.php v pub.key file.txt
-
-*/
+ini_set('display_errors',TRUE);
 
 define('P',gmp_sub(gmp_pow(2,521),1)); // 6864797660130609714981900799081393217269435300143305409394463459185543183397656052122559640661454554977296311391480858037121987999716643812574028291115057151
 
@@ -71,9 +69,11 @@ if (sizeof($argv)==1) {
 	$h=LF;
 	$h.='Commands:'.LF;
 	$h.=LF;
-	$h.=' g                     Generate keypair'.LF;
-	$h.=' s <seckey> <file>     Sign file'.LF;
-	$h.=' v <pubkey> <file>     Verify signature'.LF;
+	$h.=' g                              Generate keypair'.LF;
+	$h.=' e <pubkey> <infile> <outfile>  Encrypt file'.LF;
+	$h.=' d <seckey> <infile> <outfile>  Decrypt file'.LF;
+	$h.=' s <seckey> <file>              Sign file'.LF;
+	$h.=' v <pubkey> <file>              Verify signature'.LF;
 	$h.=LF;
 
 	echo $h;
@@ -98,6 +98,136 @@ if (sizeof($argv)==1) {
 		echo 'Key generation complete'.LF;
 
 	break;
+	case 'e': // Encrypt
+
+		if (isset($argv[2])) {
+
+			if (file_exists($argv[2])) {
+
+				if (isset($argv[3])) {
+
+					if (file_exists($argv[3])) {
+
+						do {
+
+							$x=rnd(gmp_sub(N,1));
+
+							$jobb=gmp_mod(gmp_add(gmp_add(gmp_pow($x,3),gmp_mul($x,A)),B),P);
+
+						} while (gmp_legendre($jobb,P)!=1);
+
+						$y=gmp_powm($jobb,gmp_div(gmp_add(P,1),4),P); // Special case in Tonelli-Shanks algorithm
+
+						$bal=gmp_powm($y,2,P);
+
+						$k=rnd(gmp_sub(N,1));
+
+						$kG=Szoroz(Gx,Gy,$k);
+
+						$pub=explode(LF,file_get_contents($argv[2]));
+
+						$bG[0]=gmp_init($pub[0],STOREBASE);
+						$bG[1]=gmp_init($pub[1],STOREBASE);
+
+						$kbG=Szoroz($bG[0],$bG[1],$k);
+
+						$M_kbG=Osszead($kbG[0],$kbG[1],$x,$y);
+
+						$keyfile=gmp_strval($kG[0],STOREBASE).LF.gmp_strval($kG[1],STOREBASE).LF.gmp_strval($M_kbG[0],STOREBASE).LF.gmp_strval($M_kbG[1],STOREBASE);
+
+						file_put_contents($argv[4].'.key',$keyfile);
+
+						$key=hash('sha256',gmp_strval($x,STOREBASE),TRUE);
+
+						$iv=hash('sha256',gmp_strval($y,STOREBASE),TRUE);
+
+						file_put_contents($argv[4],mcrypt_encrypt('rijndael-256',$key,file_get_contents($argv[3]),'ctr',$iv));
+
+						echo 'Encryption complete'.LF;
+
+					} else {
+
+						echo 'Can\'t open file!'.LF;
+					}
+
+				} else {
+
+					echo 'Please give file to verify!'.LF;
+				}
+
+			} else {
+
+				echo 'Can\'t open public key!'.LF;
+			}
+
+		} else {
+
+			echo 'Please give public key!'.LF;
+		}
+
+	break;
+	case 'd': // Decrypt
+
+		if (isset($argv[2])) {
+
+			if (file_exists($argv[2])) {
+
+				if (isset($argv[3])) {
+
+					if (file_exists($argv[3])) {
+
+						if (file_exists($argv[3].'.key')) {
+
+							$d=gmp_init(file_get_contents($argv[2]),STOREBASE);
+
+							$key=explode(LF,file_get_contents($argv[3].'.key'));
+
+							$kG[0]=gmp_init($key[0],STOREBASE);
+							$kG[1]=gmp_init($key[1],STOREBASE);
+
+							$dkG=Szoroz($kG[0],$kG[1],$d);
+
+							$dkG[1]=gmp_mod(gmp_neg($dkG[1]),P);
+
+							$M_kbG[0]=gmp_init($key[2],STOREBASE);
+							$M_kbG[1]=gmp_init($key[3],STOREBASE);
+
+							$M=Osszead($M_kbG[0],$M_kbG[1],$dkG[0],$dkG[1]);
+
+							$key=hash('sha256',gmp_strval($M[0],STOREBASE),TRUE);
+
+							$iv=hash('sha256',gmp_strval($M[1],STOREBASE),TRUE);
+
+							file_put_contents($argv[4],mcrypt_decrypt('rijndael-256',$key,file_get_contents($argv[3]),'ctr',$iv));
+
+							echo 'Decryption complete'.LF;
+
+						} else {
+
+							echo 'Can\'t open .key file!'.LF;
+						}
+
+					} else {
+
+						echo 'Can\'t open file!'.LF;
+					}
+
+				} else {
+
+					echo 'Please give file to sign!'.LF;
+				}
+
+			} else {
+
+				echo 'Can\'t open security key!'.LF;
+			}
+
+		} else {
+
+			echo 'Please give security key!'.LF;
+		}
+
+	break;
 	case 's': // Sign
 
 		if (isset($argv[2])) {
@@ -119,7 +249,6 @@ if (sizeof($argv)==1) {
 						$R=Szoroz(Gx,Gy,$k);
 
 						$xR=$R[0];
-						$yR=$R[1];
 
 						$r=gmp_mod($xR,N);
 
@@ -223,6 +352,9 @@ if (sizeof($argv)==1) {
 			echo 'Please give public key!'.LF;
 		}
 
+	break;
+	default:
+		echo 'Unrecognized command!'.LF;
 	break;
 	}
 }
