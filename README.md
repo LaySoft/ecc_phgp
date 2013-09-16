@@ -12,6 +12,8 @@ The crypt works with EC-ElGamal, the sign works with ECDSA algorithms.
 
 Crypt uses AES256 (Rijndael-256) cipher, the key is SHA256 hash of the X coordinate of the random generated point on the curve, and IV is the SHA256 hash of the Y coordinate of this point.
 
+Sign hash function is SHA512
+
 Commands:
 
  g                     Generate keypair
