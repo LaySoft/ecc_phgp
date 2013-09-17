@@ -1,7 +1,9 @@
 #eccphp
 
 Simple elliptic curve cryptography in PHP, uses NIST's recommended curve P-521.
+
 ---
+
 ###Requirements
 
 PHP 5.1.2+ (or earlier with Hash extension)
