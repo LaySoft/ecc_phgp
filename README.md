@@ -24,4 +24,3 @@ Generates security and public key into two separate file: sec.key and pub.key.
  s <seckey> <file>     Sign file
  v <pubkey> <file>     Verify signature
 
-
