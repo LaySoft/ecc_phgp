@@ -1,4 +1,4 @@
-#eccph(g)p
+#ecc ph(g)p  Elliptic curve cryptography in PHP, like PGP
 
 Simple elliptic curve cryptography in PHP, uses NIST's recommended curve P-521.
 
