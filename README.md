@@ -14,7 +14,7 @@ Crypt uses AES256 (Rijndael-256) cipher, the key is SHA256 hash of the X coordin
 
 Sign hash function is SHA512
 
-Commands:
+###Commands:
 
  g                     Generate keypair
 
