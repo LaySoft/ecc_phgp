@@ -1,4 +1,4 @@
-#eccphp
+#eccph(g)p
 
 Simple elliptic curve cryptography in PHP, uses NIST's recommended curve P-521.
 
