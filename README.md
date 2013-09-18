@@ -61,6 +61,10 @@ The encrypt and decrypt uses AES256 (Rijndael-256) block cipher algorithm. The e
 
 The sign and verify works with ECDSA algorithm, the hash function is SHA512. The sign process result is two numbers, which is saved to &lt;file&gt;.sig file. The verify process checks the signature in this .sig file on &lt;file&gt;, and print the signature is match or not.
 
+<ul>
+<li>Elliptic curve mathematics is more complex than RSA, but the keysize is smaller, so the calculations is faster, and consume less power.</li>
+</ul>
+
 <table border="1" cellspacing="0" cellpadding="10">
     <th align="center">Symmetric Key Size (bits)</th>
 	<th align="center">RSA and Diffie-Hellman Key Size (bits)</th>
@@ -92,3 +96,9 @@ The sign and verify works with ECDSA algorithm, the hash function is SHA512. The
   </tr> 
   <tr><td colspan="3" align="center"><b>NIST Recommended Key Sizes</b></td></tr> 
 </table>
+
+<ul>
+<li>The RSA keypair generation needs to generate big primes, elliptic curve keypair generation only needs random numbers.</li>
+<li>Elliptic curve crypt use ElGamal algorithm which works with random numbers, so same plaintext encoded to different ciphertext, which is more secure.</li>
+</ul>
+
