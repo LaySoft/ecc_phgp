@@ -21,6 +21,7 @@ Mcrypt extension
 
 
 
+
 <table border="0" cellspacing="0" cellpadding="3">
 <tr>
 <td>g</td>
@@ -30,7 +31,7 @@ Mcrypt extension
 <td colspan="2">Generates security and public keys, then saved into two separate file: sec.key and pub.key.<br/><br/></td>
 </tr>
 <tr>
-<td style="width: 1%; white-space: nowrap">e &lt;pubkey&gt; &lt;infile&gt; &lt;destfile&gt;</td>
+<td width="1%" nowrap>e &lt;pubkey&gt; &lt;infile&gt; &lt;destfile&gt;</td>
 <td>Encrypt</td>
 </tr>
 <tr>
@@ -57,6 +58,7 @@ Mcrypt extension
 <td colspan="2">Verify the &lt;file&gt;.sig signature on &lt;file&gt; with &lt;pubkey&gt; and print the result<br/><br/></td>
 </tr>
 </table>
+
 
 
 
