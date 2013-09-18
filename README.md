@@ -24,8 +24,8 @@ Mcrypt extension
 
 <table border="0" cellspacing="0" cellpadding="3">
 <tr>
-<td>g</td>
-<td>Generate keypair</td>
+<td><b>g</b></td>
+<td><b>Generate keypair</b></td>
 </tr>
 <tr>
 <td colspan="2">Generates security and public keys, then saved into two separate file: sec.key and pub.key.<br/><br/></td>
@@ -58,6 +58,7 @@ Mcrypt extension
 <td colspan="2">Verify the &lt;file&gt;.sig signature on &lt;file&gt; with &lt;pubkey&gt; and print the result<br/><br/></td>
 </tr>
 </table>
+
 
 
 
