@@ -32,29 +32,30 @@ Mcrypt extension
 <td>Encrypt</td>
 </tr>
 <tr>
-<td colspan="2">Encode &lt;infile&gt; with &lt;pubkey&gt; and save to &lt;destfile&gt;</td>
+<td colspan="2">Encode &lt;infile&gt; with &lt;pubkey&gt; and save to &lt;destfile&gt;<br/><br/></td>
 </tr>
 <tr>
 <td>d &lt;seckey&gt; &lt;infile&gt; &lt;destfile&gt;</td>
 <td>Decrypt</td>
 </tr>
 <tr>
-<td colspan="2">Decode &lt;infile&gt; with &lt;seckey&gt; and save to &lt;destfile&gt;</td>
+<td colspan="2">Decode &lt;infile&gt; with &lt;seckey&gt; and save to &lt;destfile&gt;<br/><br/></td>
 </tr>
 <td>s &lt;seckey&gt; &lt;file&gt;</td>
 <td>Sign file</td>
 </tr>
 <tr>
-<td colspan="2">Sign &lt;file&gt; with &lt;seckey&gt; and save the sign to &lt;infile&gt;.sig</td>
+<td colspan="2">Sign &lt;file&gt; with &lt;seckey&gt; and save the sign to &lt;infile&gt;.sig<br/><br/></td>
 </tr>
 <tr>
 <td>v &lt;pubkey&gt; &lt;file&gt;</td>
 <td>Verify signature</td>
 </tr>
 <tr>
-<td colspan="2">Verify the &lt;file&gt;.sig signature on &lt;file&gt; with &lt;pubkey&gt; and print</td>
+<td colspan="2">Verify the &lt;file&gt;.sig signature on &lt;file&gt; with &lt;pubkey&gt; and print the result<br/><br/></td>
 </tr>
 </table>
+
 
 
 
