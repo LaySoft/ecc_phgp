@@ -70,8 +70,8 @@ if (sizeof($argv)==1) {
 	$h.='Commands:'.LF;
 	$h.=LF;
 	$h.=' g                              Generate keypair'.LF;
-	$h.=' e <pubkey> <infile> <outfile>  Encrypt file'.LF;
-	$h.=' d <seckey> <infile> <outfile>  Decrypt file'.LF;
+	$h.=' e <pubkey> <infile> <destfile>  Encrypt file'.LF;
+	$h.=' d <seckey> <infile> <destfile>  Decrypt file'.LF;
 	$h.=' s <seckey> <file>              Sign file'.LF;
 	$h.=' v <pubkey> <file>              Verify signature'.LF;
 	$h.=LF;
@@ -324,7 +324,7 @@ if (sizeof($argv)==1) {
 
 							} else {
 
-								echo 'Signature mismatch!'.LF;
+								echo 'Signature different!'.LF;
 							}
 
 						} else {
