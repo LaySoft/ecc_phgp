@@ -36,7 +36,7 @@ Mcrypt extension
 <td><b>Encrypt</b></td>
 </tr>
 <tr>
-<td colspan="2">Encode &lt;infile&gt; with &lt;pubkey&gt; and save the encoded data to &lt;destfile&gt;. The encoded crypt key saved to &lt;destfile&gt;.key<br/><br/></td>
+<td colspan="2">Encode &lt;infile&gt; with &lt;pubkey&gt;, and save the encoded data to &lt;destfile&gt;. The encoded crypt key saved to &lt;destfile&gt;.key file<br/><br/></td>
 </tr>
 <tr>
 <td><b>d</b>&nbsp;&nbsp;&lt;seckey&gt;&nbsp;&nbsp;&lt;infile&gt;&nbsp;&nbsp;&lt;destfile&gt;</td>
@@ -59,6 +59,7 @@ Mcrypt extension
 <td colspan="2">Verify the &lt;file&gt;.sig signature on &lt;file&gt; with &lt;pubkey&gt; and print the result<br/><br/></td>
 </tr>
 </table>
+
 
 
 
