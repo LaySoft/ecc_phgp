@@ -18,7 +18,12 @@ Mcrypt extension
 
 ###Commands:
 
- g                     Generate keypair
+<table border="1">
+<tr>
+<td>g</td>
+<td>Generate keypair</td>
+</tr>
+</table>
 
 Generates security and public key into two separate file: sec.key and pub.key.
 
