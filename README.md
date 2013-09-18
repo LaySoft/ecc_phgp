@@ -36,27 +36,27 @@ Mcrypt extension
 <td><b>Encrypt</b></td>
 </tr>
 <tr>
-<td colspan="2">Encode &lt;infile&gt; with &lt;pubkey&gt;, and save the encoded data to &lt;destfile&gt;. The encoded crypt key saved to &lt;destfile&gt;.key.<br/><br/></td>
+<td colspan="2">Encode &lt;infile&gt; with &lt;pubkey&gt;, and save the encoded data to &lt;destfile&gt;. The encoded crypt key saved to &lt;destfile&gt;.key<br/><br/></td>
 </tr>
 <tr>
 <td><b>d</b>&nbsp;&nbsp;&lt;seckey&gt;&nbsp;&nbsp;&lt;infile&gt;&nbsp;&nbsp;&lt;destfile&gt;</td>
 <td><b>Decrypt</b></td>
 </tr>
 <tr>
-<td colspan="2">Decode &lt;infile&gt; with &lt;seckey&gt; and &lt;infile&gt;.key, then save the decoded data to &lt;destfile&gt;.<br/><br/></td>
+<td colspan="2">Decode &lt;infile&gt; with &lt;seckey&gt; and &lt;infile&gt;.key, then save the decoded data to &lt;destfile&gt;<br/><br/></td>
 </tr>
 <td><b>s</b>&nbsp;&nbsp;&lt;seckey&gt;&nbsp;&nbsp;&lt;file&gt;</td>
 <td><b>Sign file</b></td>
 </tr>
 <tr>
-<td colspan="2">Sign &lt;file&gt; with &lt;seckey&gt; and save the signature to &lt;file&gt;.sig.<br/><br/></td>
+<td colspan="2">Sign &lt;file&gt; with &lt;seckey&gt; and save the signature to &lt;file&gt;.sig<br/><br/></td>
 </tr>
 <tr>
 <td><b>v</b>&nbsp;&nbsp;&lt;pubkey&gt;&nbsp;&nbsp;&lt;file&gt;</td>
 <td><b>Verify signature</b></td>
 </tr>
 <tr>
-<td colspan="2">Verify the &lt;file&gt;.sig signature on &lt;file&gt; with &lt;pubkey&gt; and print the result.<br/><br/></td>
+<td colspan="2">Verify the &lt;file&gt;.sig signature on &lt;file&gt; with &lt;pubkey&gt; and print the result<br/><br/></td>
 </tr>
 </table>
 
