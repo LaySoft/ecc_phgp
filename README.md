@@ -31,20 +31,20 @@ Mcrypt extension
 <td>&lt;pubkey&gt; &lt;infile&gt; &lt;destfile&gt;</td>
 </tr>
 <tr>
-<td colspan="2">Encode &lt;infile&gt; with &lt;pubkey&gt; ans save to &lt;destfile&gt;</td>
+<td colspan="2">Encode &lt;infile&gt; with &lt;pubkey&gt; and save to &lt;destfile&gt;</td>
 </tr>
 <tr>
 <td>d</td>
 <td>&lt;seckey&gt; &lt;infile&gt; &lt;destfile&gt;</td>
 </tr>
 <tr>
-<td colspan="2">Decode &lt;infile&gt; with &lt;seckey&gt; ans save to &lt;destfile&gt;</td>
+<td colspan="2">Decode &lt;infile&gt; with &lt;seckey&gt; and save to &lt;destfile&gt;</td>
 </tr>
 <td>s &lt;seckey&gt; &lt;file&gt;</td>
 <td>Sign file</td>
 </tr>
 <tr>
-<td colspan="2">Sign &lt;file&gt; with &lt;seckey&gt; ans save the sign to &lt;infile&gt;.sig</td>
+<td colspan="2">Sign &lt;file&gt; with &lt;seckey&gt; and save the sign to &lt;infile&gt;.sig</td>
 </tr>
 <tr>
 <td>v &lt;pubkey&gt; &lt;file&gt;</td>
