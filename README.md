@@ -25,18 +25,18 @@ Mcrypt extension
 <td>Generate keypair</td>
 </tr>
 <tr>
-<td colspan="2">Generates security and public key into two separate file: sec.key and pub.key.<br/></td>
+<td colspan="2">Generates security and public key into two separate file: sec.key and pub.key.<br/><br/></td>
 </tr>
 <tr>
-<td>e</td>
-<td>&lt;pubkey&gt; &lt;infile&gt; &lt;destfile&gt;</td>
+<td>e &lt;pubkey&gt; &lt;infile&gt; &lt;destfile&gt;</td>
+<td>Encrypt</td>
 </tr>
 <tr>
 <td colspan="2">Encode &lt;infile&gt; with &lt;pubkey&gt; and save to &lt;destfile&gt;</td>
 </tr>
 <tr>
-<td>d</td>
-<td>&lt;seckey&gt; &lt;infile&gt; &lt;destfile&gt;</td>
+<td>d &lt;seckey&gt; &lt;infile&gt; &lt;destfile&gt;</td>
+<td>Decrypt</td>
 </tr>
 <tr>
 <td colspan="2">Decode &lt;infile&gt; with &lt;seckey&gt; and save to &lt;destfile&gt;</td>
@@ -55,6 +55,7 @@ Mcrypt extension
 <td colspan="2">Verify the &lt;file&gt;.sig signature on &lt;file&gt; with &lt;pubkey&gt; and print</td>
 </tr>
 </table>
+
 
 
 Generates security and public key into two separate file: sec.key and pub.key.
