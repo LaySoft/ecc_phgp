@@ -22,7 +22,7 @@ Mcrypt extension
 
 <table border="0" cellspacing="0" cellpadding="3">
 <tr>
-<td>g</td>
+<td width="1%">g</td>
 <td>Generate keypair</td>
 </tr>
 <tr>
@@ -59,13 +59,6 @@ Mcrypt extension
 
 
 
-
-
-Generates security and public key into two separate file: sec.key and pub.key.
-
-
- s <seckey> <file>     Sign file
- v <pubkey> <file>     Verify signature
 
 ###Technial info
 
