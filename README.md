@@ -18,13 +18,14 @@ Mcrypt extension
 
 ###Commands:
 
+
 <table border="0" cellspacing="0" cellpadding="3">
 <tr>
 <td>g</td>
 <td>Generate keypair</td>
 </tr>
 <tr>
-<td colspan="2">Generates security and public key into two separate file: sec.key and pub.key.</td>
+<td colspan="2">Generates security and public key into two separate file: sec.key and pub.key.<br/></td>
 </tr>
 <tr>
 <td>e</td>
