@@ -69,11 +69,11 @@ if (sizeof($argv)==1) {
 	$h=LF;
 	$h.='Commands:'.LF;
 	$h.=LF;
-	$h.=' g                              Generate keypair'.LF;
+	$h.=' g                               Generate keypair'.LF;
 	$h.=' e <pubkey> <infile> <destfile>  Encrypt file'.LF;
 	$h.=' d <seckey> <infile> <destfile>  Decrypt file'.LF;
-	$h.=' s <seckey> <file>              Sign file'.LF;
-	$h.=' v <pubkey> <file>              Verify signature'.LF;
+	$h.=' s <seckey> <file>               Sign file'.LF;
+	$h.=' v <pubkey> <file>               Verify signature'.LF;
 	$h.=LF;
 
 	echo $h;
