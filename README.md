@@ -7,9 +7,7 @@ Simple elliptic curve cryptography in PHP, uses NIST's recommended curve P-521.
 ---
 
 ###Requirements
-q
-w
-e
+
 PHP 5.1.2+, or earlier with Hash extension
 GMP extension
 Mcrypt extension
