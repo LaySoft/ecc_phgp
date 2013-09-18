@@ -2,7 +2,7 @@
 
 ##Elliptic curve cryptography in PHP, like PGP
 
-Simple elliptic curve public key cryptography in PHP, uses NIST's recommended curve P-521.
+Simple elliptic curve public key cryptography in PHP, uses <a href="http://csrc.nist.gov/groups/ST/toolkit/documents/dss/NISTReCur.pdf" target="_blank">NIST's recommended curve P-521</a>.
 
 ---
 
