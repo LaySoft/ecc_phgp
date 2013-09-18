@@ -16,7 +16,7 @@ Mcrypt extension
 
 ---
 
-###Commands:
+###Commands
 
 <table border="0" cellspacing="0" cellpadding="3">
 <tr>
@@ -103,4 +103,3 @@ The sign and verify works with ECDSA algorithm, the hash function is SHA512. The
 <li>The RSA keypair generation needs to generate big primes, elliptic curve keypair generation only needs random numbers.</li>
 <li>Elliptic curve crypt use ElGamal algorithm which works with random numbers, so same plaintext encoded to different ciphertext, which is more secure.</li>
 </ul>
-
