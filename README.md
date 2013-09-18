@@ -60,3 +60,35 @@ Mcrypt extension
 The encrypt and decrypt uses AES256 (Rijndael-256) block cipher algorithm. The encrypt process choose a random point on the curve, and this point X coordinate SHA256 hash will be the 256 bit key, and Y coodinate SHA256 hash will be the 256 bit IV for the AES256 block cipher. The X and Y coordinates encoded and decoded with EC-ElGamal algorithm. The encode process result is four numbers, which is saved to &lt;destfile&gt;.key file.
 
 The sign and verify works with ECDSA algorithm, the hash function is SHA512. The sign process result is two numbers, which is saved to &lt;file&gt;.sig file. The verify process checks the signature in this .sig file on &lt;file&gt;, and print the signature is match or not.
+
+<table border="1" cellspacing="0" cellpadding="10">
+    <th align="center">Symmetric Key Size (bits)</th>
+	<th align="center">RSA and Diffie-Hellman Key Size (bits)</th>
+	<th align="center">Elliptic Curve Key Size (bits)</th>
+  <tr>
+    <td align="center">80</td>
+	<td align="center">1024</td>
+	<td align="center">160</td>
+  </tr>
+  <tr id="highlight">
+    <td align="center">112</td>
+	<td align="center">2048</td>
+	<td align="center">224</td>
+  </tr>
+  <tr>
+    <td align="center">128</td>
+	<td align="center">3072</td>
+	<td align="center">256</td>
+  </tr>  
+  <tr id="highlight">
+    <td align="center">192</td>
+	<td align="center">7680</td>
+	<td align="center">384</td>
+  </tr>
+  <tr>
+    <td align="center">256</td>
+	<td align="center">15360</td>
+	<td align="center">521</td>
+  </tr> 
+  <tr><td colspan="3" align="center">Table 1: NIST Recommended Key Sizes</td></tr> 
+</table>
