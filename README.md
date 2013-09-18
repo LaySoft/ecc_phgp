@@ -8,7 +8,7 @@ Simple elliptic curve public key cryptography in PHP, uses <a href="http://csrc.
 
 ###Requirements
 
-PHP 5.1.2+, or earlier with Hash extension
+PHP 5.1.2+ (cli), or earlier with Hash extension
 
 GMP extension
 
@@ -17,11 +17,6 @@ Mcrypt extension
 ---
 
 ###Commands:
-
-
-
-
-
 
 <table border="0" cellspacing="0" cellpadding="3">
 <tr>
@@ -59,15 +54,6 @@ Mcrypt extension
 <td colspan="2">Verify the signature in &lt;file&gt;.sig on &lt;file&gt; with &lt;pubkey&gt; and print the result<br/><br/></td>
 </tr>
 </table>
-
-
-
-
-
-
-
-
-
 
 ###Technial info
 
