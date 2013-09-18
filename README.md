@@ -30,4 +30,4 @@ Generates security and public key into two separate file: sec.key and pub.key.
 
 The encrypt and decrypt uses AES256 (Rijndael-256) block cipher algorithm. The encrypt process choose a random point on the curve, and this point X coordinate SHA256 hash will be the 256 bit key, and Y coodinate SHA256 hash will be the 256 bit IV for the AES256 block cipher. The X and Y coordinates encoded and decoded with EC-ElGamal algorithm. The encode process result is four numbers, which is saved to &lt;destfile&gt;.key file.
 
-The sign and verify works with ECDSA algorithm. The sign process result is two numbers, which is saved to <file>.sig file. The sign hash funtion is SHA512.
+The sign and verify works with ECDSA algorithm. The sign process result is two numbers, which is saved to &lt;file&gt;.sig file. The sign hash funtion is SHA512.
