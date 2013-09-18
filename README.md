@@ -90,5 +90,5 @@ The sign and verify works with ECDSA algorithm, the hash function is SHA512. The
 	<td align="center">15360</td>
 	<td align="center">521</td>
   </tr> 
-  <tr><td colspan="3" align="center">Table 1: NIST Recommended Key Sizes</td></tr> 
+  <tr><td colspan="3" align="center"><b>NIST Recommended Key Sizes</b></td></tr> 
 </table>
