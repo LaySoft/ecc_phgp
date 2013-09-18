@@ -18,12 +18,43 @@ Mcrypt extension
 
 ###Commands:
 
-<table border="1">
+<table border="0" cellspacing="0" cellpadding="3">
 <tr>
 <td>g</td>
 <td>Generate keypair</td>
 </tr>
+<tr>
+<td colspan="2">Generates security and public key into two separate file: sec.key and pub.key.</td>
+</tr>
+<tr>
+<td>e</td>
+<td>&lt;pubkey&gt; &lt;infile&gt; &lt;destfile&gt;</td>
+</tr>
+<tr>
+<td colspan="2">Encode &lt;infile&gt; with &lt;pubkey&gt; ans save to &lt;destfile&gt;</td>
+</tr>
+<tr>
+<td>d</td>
+<td>&lt;seckey&gt; &lt;infile&gt; &lt;destfile&gt;</td>
+</tr>
+<tr>
+<td colspan="2">Decode &lt;infile&gt; with &lt;seckey&gt; ans save to &lt;destfile&gt;</td>
+</tr>
+<td>s &lt;seckey&gt; &lt;file&gt;</td>
+<td>Sign file</td>
+</tr>
+<tr>
+<td colspan="2">Sign &lt;file&gt; with &lt;seckey&gt; ans save the sign to &lt;infile&gt;.sig</td>
+</tr>
+<tr>
+<td>v &lt;pubkey&gt; &lt;file&gt;</td>
+<td>Verify signature</td>
+</tr>
+<tr>
+<td colspan="2">Verify the &lt;file&gt;.sig signature on &lt;file&gt; with &lt;pubkey&gt; and print</td>
+</tr>
 </table>
+
 
 Generates security and public key into two separate file: sec.key and pub.key.
 
