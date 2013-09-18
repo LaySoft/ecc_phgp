@@ -22,6 +22,7 @@ Mcrypt extension
 
 
 
+
 <table border="0" cellspacing="0" cellpadding="3">
 <tr>
 <td><b>g</b></td>
@@ -31,33 +32,34 @@ Mcrypt extension
 <td colspan="2">Generates security and public keys, then saved into two separate file: sec.key and pub.key.<br/><br/></td>
 </tr>
 <tr>
-<td width="1%" nowrap>e&nbsp;&nbsp;&lt;pubkey&gt;&nbsp;&nbsp;&lt;infile&gt;&nbsp;&nbsp;&lt;destfile&gt;</td>
-<td>Encrypt</td>
+<td width="1%" nowrap><b>e</b>&nbsp;&nbsp;&lt;pubkey&gt;&nbsp;&nbsp;&lt;infile&gt;&nbsp;&nbsp;&lt;destfile&gt;</td>
+<td><b>Encrypt</b></td>
 </tr>
 <tr>
 <td colspan="2">Encode &lt;infile&gt; with &lt;pubkey&gt; and save the encoded data to &lt;destfile&gt;. The encoded crypt key saved to &lt;destfile&gt;.key<br/><br/></td>
 </tr>
 <tr>
-<td>d&nbsp;&nbsp;&lt;seckey&gt;&nbsp;&nbsp;&lt;infile&gt;&nbsp;&nbsp;&lt;destfile&gt;</td>
-<td>Decrypt</td>
+<td><b>d</b>&nbsp;&nbsp;&lt;seckey&gt;&nbsp;&nbsp;&lt;infile&gt;&nbsp;&nbsp;&lt;destfile&gt;</td>
+<td><b>Decrypt</b></td>
 </tr>
 <tr>
 <td colspan="2">Decode &lt;infile&gt; with &lt;seckey&gt; and &lt;infile&gt;.key, then save the decoded data to &lt;destfile&gt;<br/><br/></td>
 </tr>
-<td>s&nbsp;&nbsp;&lt;seckey&gt;&nbsp;&nbsp;&lt;file&gt;</td>
-<td>Sign file</td>
+<td><b>s</b>&nbsp;&nbsp;&lt;seckey&gt;&nbsp;&nbsp;&lt;file&gt;</td>
+<td><b>Sign file</b></td>
 </tr>
 <tr>
 <td colspan="2">Sign &lt;file&gt; with &lt;seckey&gt; and save the signature to &lt;file&gt;.sig<br/><br/></td>
 </tr>
 <tr>
-<td>v&nbsp;&nbsp;&lt;pubkey&gt;&nbsp;&nbsp;&lt;file&gt;</td>
-<td>Verify signature</td>
+<td><b>v</b>&nbsp;&nbsp;&lt;pubkey&gt;&nbsp;&nbsp;&lt;file&gt;</td>
+<td><b>Verify signature</b></td>
 </tr>
 <tr>
 <td colspan="2">Verify the &lt;file&gt;.sig signature on &lt;file&gt; with &lt;pubkey&gt; and print the result<br/><br/></td>
 </tr>
 </table>
+
 
 
 
