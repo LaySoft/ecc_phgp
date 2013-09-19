@@ -41,7 +41,7 @@ Mcrypt extension
 <td colspan="2">Decode &lt;infile&gt; with &lt;seckey&gt; and &lt;infile&gt;.key, then save the decoded data to &lt;destfile&gt;<br/><br/></td>
 </tr>
 <td><b>s</b>&nbsp;&nbsp;&lt;seckey&gt;&nbsp;&nbsp;&lt;file&gt;</td>
-<td><b>Sign file</b></td>
+<td><b>Sign</b></td>
 </tr>
 <tr>
 <td colspan="2">Sign &lt;file&gt; with &lt;seckey&gt; and save the signature to &lt;file&gt;.sig<br/><br/></td>
