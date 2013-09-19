@@ -64,7 +64,7 @@ Sign file and verify uses the ECDSA algorithm, and the hash function is SHA512. 
 ###Why elliptic curve cryptography is "better" than RSA?
 
 <ul>
-<li>Elliptic curve mathematics is more complex than RSA, but the keysize is smaller, so the calculations is faster, and consume less power.</li>
+<li>Elliptic curve mathematics is more complex than RSA, but the keysize is smaller, so the calculations are faster, and waste less energy.</li>
 </ul>
 
 <table border="1" cellspacing="0" cellpadding="10">
