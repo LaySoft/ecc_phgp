@@ -59,7 +59,7 @@ Mcrypt extension
 
 Encrypt and decrypt uses AES256 (Rijndael-256) block cipher algorithm. The encrypt process picks a random point on the curve; this point's X coordinate SHA256 hash will be the 256 bit key, and Y coodinate's SHA256 hash will be the 256 bit IV for the AES256 block cipher. The X and Y coordinates are encoded and decoded with EC-ElGamal algorithm. The result are four numbers that will be saved to &lt;destfile&gt;.key file.
 
-The sign and verify works with ECDSA algorithm, the hash function is SHA512. The sign process result is two numbers, which is saved to &lt;file&gt;.sig file. The verify process checks the signature in this .sig file on &lt;file&gt;, and print the signature is match or not.
+Sign file and verify uses the ECDSA algorithm, and the hash function is SHA512. Signing results are two numbers that will be saved to &lt;file&gt;.sig file. The verify process checks the signature in this .sig file on &lt;file&gt;, and print the signature is match or not.
 
 ###Why elliptic curve cryptography is "better" than RSA?
 
