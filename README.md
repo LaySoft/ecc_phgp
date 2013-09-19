@@ -55,7 +55,7 @@ Mcrypt extension
 </tr>
 </table>
 
-###Technial info
+###Technical info
 
 Encrypt and decrypt uses AES256 (Rijndael-256) block cipher algorithm. The encrypt process picks a random point on the curve; this point's X coordinate SHA256 hash will be the 256 bit key, and Y coodinate's SHA256 hash will be the 256 bit IV for the AES256 block cipher. The X and Y coordinates are encoded and decoded with EC-ElGamal algorithm. The result are four numbers that will be saved to &lt;destfile&gt;.key file.
 
