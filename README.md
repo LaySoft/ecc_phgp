@@ -2,7 +2,7 @@
 
 ##Elliptic curve cryptography in PHP, similar to PGP
 
-Simple elliptic curve public key cryptography implementation in PHP, using <a href="http://csrc.nist.gov/groups/ST/toolkit/documents/dss/NISTReCur.pdf" target="_blank">NIST's recommended curve P-521</a>.
+A simple elliptic curve public key cryptography implementation in PHP, using <a href="http://csrc.nist.gov/groups/ST/toolkit/documents/dss/NISTReCur.pdf" target="_blank">NIST's recommended curve P-521</a>.
 
 ---
 
@@ -24,7 +24,7 @@ Mcrypt extension
 <td><b>Generate keypair</b></td>
 </tr>
 <tr>
-<td colspan="2">Generates new security and public keys, then saved into two separate file: sec.key and pub.key. Old key files will be overwrite!<br/><br/></td>
+<td colspan="2">Generates new security and public keys, saving them into two separate file: sec.key and pub.key. Old key files will be overwrite!<br/><br/></td>
 </tr>
 <tr>
 <td width="1%" nowrap><b>e</b>&nbsp;&nbsp;&lt;pubkey&gt;&nbsp;&nbsp;&lt;infile&gt;&nbsp;&nbsp;&lt;destfile&gt;</td>
