@@ -53,6 +53,15 @@ function Szoroz($kx,$ky,$s) {
 	return(array($x,$y));
 }
 
+function GetRight($x) {
+	return(gmp_mod(gmp_add(gmp_add(gmp_pow($x,3),gmp_mul($x,A)),B),P));
+}
+
+function GetY($x) {
+	$y=gmp_powm(GetRight($x),gmp_div(gmp_add(P,1),4),P); // Special case in Tonelli-Shanks algorithm
+	return($y);
+}
+
 function rnd($hatar) {
 	$random=gmp_strval(gmp_random());
 	$small_rand=rand();
@@ -83,13 +92,17 @@ if (sizeof($argv)==1) {
 	switch ($argv[1]) {
 	case 'g': // Generate keys
 
-		$d=rnd(gmp_sub(N,1));
+		do {
 
-		$Q=Szoroz(Gx,Gy,$d);
+			$d=rnd(gmp_sub(N,1));
+
+			$Q=Szoroz(Gx,Gy,$d);
+
+		} while (gmp_cmp(GetY($Q[0]),$Q[1])!=0);
 
 		$sec=gmp_strval($d,STOREBASE);
 
-		$pub=gmp_strval($Q[0],STOREBASE).LF.gmp_strval($Q[1],STOREBASE);
+		$pub=gmp_strval($Q[0],STOREBASE);
 		
 		file_put_contents('sec.key',$sec);
 
@@ -110,38 +123,39 @@ if (sizeof($argv)==1) {
 
 						do {
 
-							$x=rnd(gmp_sub(N,1));
+							$k=rnd(gmp_sub(N,1));
 
-							$jobb=gmp_mod(gmp_add(gmp_add(gmp_pow($x,3),gmp_mul($x,A)),B),P);
+							$kG=Szoroz(Gx,Gy,$k);
 
-						} while (gmp_legendre($jobb,P)!=1);
+						} while (gmp_cmp(GetY($kG[0]),$kG[1])!=0);
 
-						$y=gmp_powm($jobb,gmp_div(gmp_add(P,1),4),P); // Special case in Tonelli-Shanks algorithm
+						$bGx=gmp_init(file_get_contents($argv[2]),STOREBASE);
 
-						$bal=gmp_powm($y,2,P);
+						$kbG=Szoroz($bGx,GetY($bGx),$k);
 
-						$k=rnd(gmp_sub(N,1));
+						do {
 
-						$kG=Szoroz(Gx,Gy,$k);
+							do {
 
-						$pub=explode(LF,file_get_contents($argv[2]));
+								$x=rnd(gmp_sub(N,1));
 
-						$bG[0]=gmp_init($pub[0],STOREBASE);
-						$bG[1]=gmp_init($pub[1],STOREBASE);
+							} while (gmp_legendre(GetRight($x),P)!=1);
 
-						$kbG=Szoroz($bG[0],$bG[1],$k);
+							$y=GetY($x);
 
-						$M_kbG=Osszead($kbG[0],$kbG[1],$x,$y);
+							$M_kbG=Osszead($kbG[0],$kbG[1],$x,$y);
 
-						$keyfile=gmp_strval($kG[0],STOREBASE).LF.gmp_strval($kG[1],STOREBASE).LF.gmp_strval($M_kbG[0],STOREBASE).LF.gmp_strval($M_kbG[1],STOREBASE);
+						} while (gmp_cmp(GetY($M_kbG[0]),$M_kbG[1])!=0);
+
+						$keyfile=gmp_strval($kG[0],STOREBASE).LF.gmp_strval($M_kbG[0],STOREBASE);
 
 						file_put_contents($argv[4].'.key',$keyfile);
 
-						$key=hash('sha256',gmp_strval($x,STOREBASE),TRUE);
+						$crypt_key=hash('sha256',gmp_strval($x,STOREBASE),TRUE);
 
-						$iv=hash('sha256',gmp_strval($y,STOREBASE),TRUE);
+						$crypt_iv=hash('sha256',gmp_strval($y,STOREBASE),TRUE);
 
-						file_put_contents($argv[4],mcrypt_encrypt('rijndael-256',$key,file_get_contents($argv[3]),'ctr',$iv));
+						file_put_contents($argv[4],mcrypt_encrypt('rijndael-256',$crypt_key,file_get_contents($argv[3]),'ctr',$crypt_iv));
 
 						echo 'Encryption complete'.LF;
 
@@ -182,23 +196,19 @@ if (sizeof($argv)==1) {
 
 							$key=explode(LF,file_get_contents($argv[3].'.key'));
 
-							$kG[0]=gmp_init($key[0],STOREBASE);
-							$kG[1]=gmp_init($key[1],STOREBASE);
+							$kGx=gmp_init($key[0],STOREBASE);
 
-							$dkG=Szoroz($kG[0],$kG[1],$d);
+							$dkG=Szoroz($kGx,GetY($kGx),$d);
 
-							$dkG[1]=gmp_mod(gmp_neg($dkG[1]),P);
+							$M_kbGx=gmp_init($key[1],STOREBASE);
 
-							$M_kbG[0]=gmp_init($key[2],STOREBASE);
-							$M_kbG[1]=gmp_init($key[3],STOREBASE);
+							$M=Osszead($M_kbGx,GetY($M_kbGx),$dkG[0],gmp_mod(gmp_neg($dkG[1]),P));
 
-							$M=Osszead($M_kbG[0],$M_kbG[1],$dkG[0],$dkG[1]);
+							$crypt_key=hash('sha256',gmp_strval($M[0],STOREBASE),TRUE);
 
-							$key=hash('sha256',gmp_strval($M[0],STOREBASE),TRUE);
+							$crypt_iv=hash('sha256',gmp_strval($M[1],STOREBASE),TRUE);
 
-							$iv=hash('sha256',gmp_strval($M[1],STOREBASE),TRUE);
-
-							file_put_contents($argv[4],mcrypt_decrypt('rijndael-256',$key,file_get_contents($argv[3]),'ctr',$iv));
+							file_put_contents($argv[4],mcrypt_decrypt('rijndael-256',$crypt_key,file_get_contents($argv[3]),'ctr',$crypt_iv));
 
 							echo 'Decryption complete'.LF;
 
@@ -292,10 +302,7 @@ if (sizeof($argv)==1) {
 
 						if (file_exists($argv[3].'.sig')) {
 
-							$pub=explode(LF,file_get_contents($argv[2]));
-
-							$Q[0]=gmp_init($pub[0],STOREBASE);
-							$Q[1]=gmp_init($pub[1],STOREBASE);
+							$Qx=gmp_init(file_get_contents($argv[2]),STOREBASE);
 
 							$sig=explode(LF,file_get_contents($argv[3].'.sig'));
 
@@ -312,7 +319,7 @@ if (sizeof($argv)==1) {
 
 							$t1=Szoroz(Gx,Gy,$u1);
 
-							$t2=Szoroz($Q[0],$Q[1],$u2);
+							$t2=Szoroz($Qx,GetY($Qx),$u2);
 
 							$Rr=Osszead($t1[0],$t1[1],$t2[0],$t2[1]);
 
