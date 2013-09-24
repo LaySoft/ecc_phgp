@@ -101,5 +101,5 @@ Sign file and verify uses the ECDSA algorithm, and the hash function is SHA512. 
 
 <ul>
 <li>The RSA keypair generation needs to generate big primes, elliptic curve keypair generation only needs random numbers.</li>
-<li>Elliptic curve crypt use the ElGamal algorithm that works with random numbers, so the same plaintext is encoded into a different ciphertext each time which is more secure.</li>
+<li>Elliptic curve crypt use the ElGamal algorithm that works with random numbers, so the same plaintext is encoded into a different ciphertext each time, which is more secure.</li>
 </ul>
