@@ -58,7 +58,7 @@ function GetRight($x) {
 }
 
 function GetY($x) {
-	$y=gmp_powm(GetRight($x),gmp_div(gmp_add(P,1),4),P); // Special case in Tonelli-Shanks algorithm
+	$y=gmp_powm(GetRight($x),gmp_divexact(gmp_add(P,1),4),P); // Special case in Tonelli-Shanks algorithm
 	return($y);
 }
 
@@ -166,7 +166,7 @@ if (sizeof($argv)==1) {
 
 				} else {
 
-					echo 'Please give file to verify!'.LF;
+					echo 'Please give file to encrypt!'.LF;
 				}
 
 			} else {
@@ -224,7 +224,7 @@ if (sizeof($argv)==1) {
 
 				} else {
 
-					echo 'Please give file to sign!'.LF;
+					echo 'Please give file to decrypt!'.LF;
 				}
 
 			} else {
@@ -248,7 +248,7 @@ if (sizeof($argv)==1) {
 
 					if (file_exists($argv[3])) {
 
-						$d=gmp_init(file_get_contents($argv[2]),STOREBASE);
+						$d=gmp_init(file_get_contents($argv[2]),STOREBASE); // Security key
 
 						$e=gmp_init(hash_file('sha512',$argv[3]),16);
 
@@ -258,9 +258,7 @@ if (sizeof($argv)==1) {
 
 						$R=Szoroz(Gx,Gy,$k);
 
-						$xR=$R[0];
-
-						$r=gmp_mod($xR,N);
+						$r=gmp_mod($R[0],N);
 
 						$s=gmp_mod(gmp_mul($k1,gmp_add($e,gmp_mul($d,$r))),N);
 
@@ -302,7 +300,7 @@ if (sizeof($argv)==1) {
 
 						if (file_exists($argv[3].'.sig')) {
 
-							$Qx=gmp_init(file_get_contents($argv[2]),STOREBASE);
+							$Qx=gmp_init(file_get_contents($argv[2]),STOREBASE); // Public key
 
 							$sig=explode(LF,file_get_contents($argv[3].'.sig'));
 
@@ -361,7 +359,9 @@ if (sizeof($argv)==1) {
 
 	break;
 	default:
+
 		echo 'Unrecognized command!'.LF;
+
 	break;
 	}
 }
