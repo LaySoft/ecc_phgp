@@ -252,7 +252,7 @@ if (sizeof($argv)==1) {
 
 						$e=gmp_init(hash_file('sha512',$argv[3]),16);
 
-						$k=rnd(gmp_sub(N,1));
+						$k=rnd(gmp_sub(N,1)); // This was 4(!) in Sony's implementation in Playstation 3 :)
 
 						$k1=gmp_invert($k,N);
 
